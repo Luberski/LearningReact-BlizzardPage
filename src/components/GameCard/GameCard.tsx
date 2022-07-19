@@ -54,8 +54,18 @@ export const GameCard = ({
 
   useEffect(() => {
     const vid = document.getElementsByTagName('video')[0];
-    console.log(vid);
-    isActive ? vid.play() : vid.load();
+
+    if (isActive) {
+      vid.load();
+      let playPromise = vid.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(_=>_)
+          .catch(_=>_);
+      }
+    } else {
+      vid.pause();
+    }
   }, [isActive]);
 
   return (
@@ -87,11 +97,11 @@ export const GameCard = ({
         <p>{genre}</p>
         <span>
           {bNet && <img src={bNetImg} alt="Battle.net" />}
-          {playStore && <img src={playStoreImg} alt="Play Store" />}
-          {appStore && <img src={appStoreImg} alt="App Store" />}
           {pStation && <img src={playStationImg} alt="Play Station" />}
           {nSwitch && <img src={nSwitchImg} alt="Nintendo Switch" />}
           {xbox && <img src={xboxImg} alt="Xbox" />}
+          {appStore && <img src={appStoreImg} alt="App Store" />}
+          {playStore && <img src={playStoreImg} alt="Play Store" />}
         </span>
       </div>
     </a>
