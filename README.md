@@ -1,1 +1,1 @@
-Recreated blizzard page for learning purpouses
+Recreated blizzard page for learning purposes
